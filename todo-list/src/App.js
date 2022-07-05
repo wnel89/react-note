@@ -35,7 +35,27 @@ class App extends Component {
       this.handleCreate();
     }
   }
-  
+  handleToggle = (id) => {
+    const{ todos } = this.state;
+
+    const index = todos.findIndex(todo => todo.id === id);
+    const selected = todos[index]; // 선택한 객체
+    const nextTodos = [...todos]; // 배열을 복사
+
+    nextTodos[index] = {
+      ...selected,
+      checked: !selected.checked
+    }
+    this.setState({
+      todos: nextTodos
+    })
+  }
+  handleRemove = (id) => {
+    const { todos } = this.state;
+    this.setState({
+      todos: todos.filter(todo => todo.id !== id)
+    })
+  }
 
   
   render() {
@@ -43,7 +63,9 @@ class App extends Component {
     const {
       handleChange,
       handleCreate,
-      handleKeyPress
+      handleKeyPress,
+      handleToggle,
+      handleRemove
     } = this;
 
     return (
@@ -55,7 +77,7 @@ class App extends Component {
         onCreate={handleCreate}
         />
       )}>
-        <TodoItemList todos={todos}/>
+        <TodoItemList todos={todos} onToggle={handleToggle} onRemove={handleRemove}/>
       </TodoListTemlpate>
     );
   }
