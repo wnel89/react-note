@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './TodoListTemlpate.css';
 
-class TodoListTemlpate extends Component {
-    render() {
-        return (
-            <main className='todo-list-template'>
+const TodoListTemlpate =({form, children}) => {
+    return(
+        <main className='todo-list-template'>
                 <div className='title'>
                     오늘 할 일
                 </div>
@@ -15,8 +14,7 @@ class TodoListTemlpate extends Component {
                     {children}
                 </section>
             </main>
-        );
-    }
+    )
 }
 
 export default TodoListTemlpate;
