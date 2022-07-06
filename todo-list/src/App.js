@@ -9,9 +9,9 @@ class App extends Component {
   state = {
     input: '',
     todos: [
-      { id: 0, text: '리액트 소개', checked: false },
-      { id: 1, text: '리액트 소개', checked: true },
-      { id: 2, text: '리액트 소개', checked: false }
+      { id: 0, text: '리액트 소개', checked: false, editing: false },
+      { id: 1, text: '리액트 소개', checked: true, editing: false },
+      { id: 2, text: '리액트 소개', checked: false, editing: true }
     ]
   }
   handleChange = (e) => {
@@ -59,6 +59,16 @@ class App extends Component {
     })
   }
   handleUpdate = (id, data) => {
+    const { todos } = this.state;
+    this.setState({
+      todos: todos.map(
+        todos => id === todos.id
+        ? { ...todos, ...data }
+        : todos
+      )
+    })
+  }
+  handleEditingUpdate = (id, data) => {
     const { todos } = this.state;
     this.setState({
       todos: todos.map(

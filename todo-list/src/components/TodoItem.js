@@ -8,7 +8,7 @@ class TodoItem extends Component {
     }
 
     render() {
-        const { text, checked, id, onToggle, onRemove, onUpdate } = this.props;
+        const { text, checked, id, onToggle, onRemove, onUpdate, editing } = this.props;
         console.log(id);
         
         return (
@@ -19,12 +19,15 @@ class TodoItem extends Component {
                 }}>×</div>
                 <div className={`todo-text ${checked && 'checked'}`}>
                     <div>{text}</div>
+                    {/* 수정상태에 따라 input 노출 여부 결정 */}
+                    {/* {editing === true ? <input value={text} /> : null} */}
+                    <input value={text} />
                 </div>
                 {
                 checked && (<div className='check-mark'>✓</div>)
             }
                 <div className='update' onClick={(e) => {
-                    onUpdate()
+                    onUpdate(id)
                 }}>🖊</div>
             </div>
         );

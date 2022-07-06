@@ -11,7 +11,7 @@ class TodoItemList extends Component {
         const { todos, onToggle, onRemove, onUpdate } = this.props;
 
         const todoList = todos.map(
-            ({id, text, checked}) => (
+            ({id, text, checked, editing}) => (
                 <TodoItem
                 id={id}
                 text={text}
@@ -20,6 +20,7 @@ class TodoItemList extends Component {
                 onRemove={onRemove}
                 onUpdate={onUpdate}
                 key={id}
+                editing={editing}
                 /> // TodoItem 컴포넌트를 한 이유는 map으로 배열을 출력할 때 해당하는 정보를 TodoItem 컴포넌트로 전달하여 보여주기 위함
             )
         ) // todos.map으로 만든 배열들이 todoList
