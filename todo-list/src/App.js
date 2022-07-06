@@ -39,10 +39,12 @@ class App extends Component {
     const{ todos } = this.state;
 
     const index = todos.findIndex(todo => todo.id === id);
+    // 파라미터로 받은 id를 가지고 몇번째 아이템인지 찾기
     const selected = todos[index]; // 선택한 객체
     const nextTodos = [...todos]; // 배열을 복사
 
     nextTodos[index] = {
+
       ...selected,
       checked: !selected.checked
     }
@@ -56,7 +58,16 @@ class App extends Component {
       todos: todos.filter(todo => todo.id !== id)
     })
   }
-
+  handleUpdate = (id, data) => {
+    const { todos } = this.state;
+    this.setState({
+      todos: todos.map(
+        todos => id === todos.id
+        ? { ...todos, ...data }
+        : todos
+      )
+    })
+  }
   
   render() {
     const { input, todos } = this.state;
@@ -65,7 +76,8 @@ class App extends Component {
       handleCreate,
       handleKeyPress,
       handleToggle,
-      handleRemove
+      handleRemove,
+      handleUpdate
     } = this;
 
     return (
@@ -77,10 +89,27 @@ class App extends Component {
         onCreate={handleCreate}
         />
       )}>
-        <TodoItemList todos={todos} onToggle={handleToggle} onRemove={handleRemove}/>
+        <TodoItemList 
+        todos={todos} 
+        onToggle={handleToggle} 
+        onRemove={handleRemove}
+        onUpdate={handleUpdate}
+        />
       </TodoListTemlpate>
     );
   }
 }
 
 export default App;
+
+// TODO 기존 항목 수정
+// 1. 연필 클릭
+// 2. 기존 텍스트 위치에 input 태그로 변경
+// 3. 생성된 input 태그에 기존 value값 넣기
+// 4. input 수정(변경된 값을 변수로 갖고 있어야 함)
+// 5. 수정한 후 기존 연필 위치에 완료 이미지 추가
+// 6. 수정완료시 4번에서 생성된 변수를 부모로 emit
+// 7. 부모에서 기존 value값을 갖고 있던 this.state({input})을 변경
+// this.setState({
+//  todos: [{},{},{~~~~~, text: e.target.value}]
+// })
