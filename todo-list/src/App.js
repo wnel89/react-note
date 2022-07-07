@@ -18,6 +18,7 @@ class App extends Component {
     this.setState({
       input: e.target.value
     })
+    console.log('handleChange is running');
   }
   handleCreate = () => {
     const { input, todos } = this.state;
@@ -58,27 +59,42 @@ class App extends Component {
       todos: todos.filter(todo => todo.id !== id)
     })
   }
-  handleUpdate = (id, data) => {
-    const { todos } = this.state;
+  handleEditingUpdate = (id) => {
+    // console.log('handleEditingUpdate start', id);
+    const {todos} = this.state;
+
+    const index = todos.findIndex(todo => todo.id === id);
+    const selected = todos[index];
+    const nextTodos = [...todos];
+    nextTodos[index] = {
+      ...selected,
+      editing: !selected.editing
+    }
+
+    this.setState({
+      todos: [...nextTodos]
+    })
+
+  }
+  handleTextChange = (e) => {
+    console.log('handleTextChange is running');
+    const { value } = e.target;
+    this.setState({
+      value
+    })
+  }
+  handleTextUpdate = (id, data) => {
+    console.log(id, data)
+    const {todos} = this.state;
     this.setState({
       todos: todos.map(
         todos => id === todos.id
-        ? { ...todos, ...data }
+        ? { ...todos, data }
         : todos
       )
     })
   }
-  handleEditingUpdate = (id, data) => {
-    const { todos } = this.state;
-    this.setState({
-      todos: todos.map(
-        todos => id === todos.id
-        ? { ...todos, ...data }
-        : todos
-      )
-    })
-  }
-  
+
   render() {
     const { input, todos } = this.state;
     const {
@@ -87,7 +103,9 @@ class App extends Component {
       handleKeyPress,
       handleToggle,
       handleRemove,
-      handleUpdate
+      handleEditingUpdate,
+      handleTextChange,
+      handleTextUpdate
     } = this;
 
     return (
@@ -103,10 +121,13 @@ class App extends Component {
         todos={todos} 
         onToggle={handleToggle} 
         onRemove={handleRemove}
-        onUpdate={handleUpdate}
+        onEditingUpdate={handleEditingUpdate}
+        onTextChange={handleTextChange}
+        onTextUpdate={handleTextUpdate}
         />
       </TodoListTemlpate>
     );
+    
   }
 }
 

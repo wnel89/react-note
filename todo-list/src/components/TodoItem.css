@@ -52,3 +52,17 @@
     margin-left: 1rem;
     font-weight: 800;
   }
+  .editButton{
+    padding: .5rem 1rem .5rem 1rem;
+    margin-left: 1rem;
+    background: #22b8cf;
+    border-radius: 3px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+    border: none;
+  }
+  .editButton:hover {
+    background: #1e9dad;
+}
