@@ -4,16 +4,22 @@ import Form from './components/Form';
 import TodoItemList from './components/TodoItemList';
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      input: '',
+      todos: [
+        { id: 0, text: '리액트 소개', checked: false, editing: false },
+        { id: 1, text: '리액트 소개', checked: true, editing: false },
+        { id: 2, text: '리액트 소개', checked: false, editing: true }
+      ]
+    };
+    this.handleEditingUpdate = this.handleEditingUpdate.bind(this);
+  }
   id = 3
 
-  state = {
-    input: '',
-    todos: [
-      { id: 0, text: '리액트 소개', checked: false, editing: false },
-      { id: 1, text: '리액트 소개', checked: true, editing: false },
-      { id: 2, text: '리액트 소개', checked: false, editing: true }
-    ]
-  }
   handleChange = (e) => {
     this.setState({
       input: e.target.value
@@ -60,7 +66,7 @@ class App extends Component {
     })
   }
   handleEditingUpdate = (id) => {
-    // console.log('handleEditingUpdate start', id);
+    console.log('handleEditingUpdate start', id);
     const {todos} = this.state;
 
     const index = todos.findIndex(todo => todo.id === id);
@@ -71,6 +77,7 @@ class App extends Component {
       editing: !selected.editing
     }
 
+    console.log(nextTodos)
     this.setState({
       todos: [...nextTodos]
     })
@@ -78,21 +85,32 @@ class App extends Component {
   }
   handleTextChange = (e) => {
     console.log('handleTextChange is running');
-    const { value } = e.target;
+    const { name, value } = e.target;
     this.setState({
-      value
+      [name]: value
     })
   }
   handleTextUpdate = (id, data) => {
-    console.log(id, data)
-    const {todos} = this.state;
+    console.log("id 확인: " + id);
+    console.log("data 확인: " + data);
+
+    const { todos } = this.state;
+    console.log(todos);
+
+    const index = todos.findIndex(todo => todo.id === id);
+    const selected = todos[index];
+    const newTodos = [...todos];
+    newTodos[index] = {
+      ...selected,
+      text: data
+    }
+    console.log(newTodos, this.state);
     this.setState({
-      todos: todos.map(
-        todos => id === todos.id
-        ? { ...todos, data }
-        : todos
-      )
+      todos: newTodos
     })
+    console.log(todos);
+    
+
   }
 
   render() {
@@ -118,7 +136,7 @@ class App extends Component {
         />
       )}>
         <TodoItemList 
-        todos={todos} 
+        data={todos} 
         onToggle={handleToggle} 
         onRemove={handleRemove}
         onEditingUpdate={handleEditingUpdate}
