@@ -8,6 +8,16 @@ import Book from '../asset/image/book.png';
 const ThunderTab = () => {
   return (
     <ScrollView style={styles.scroll}>
+      <View style={styles.contWrap1}>
+        <View style={styles.cWrap1}>
+          <Text style={styles.tWrap1}>시간순</Text>
+          <Text style={styles.tWrap1}>|</Text>
+          <Text style={styles.tWrap1}>거리순</Text>
+        </View>
+        <View>
+          <Text>200km/60일</Text>
+        </View>
+      </View>
       <View style={styles.card1}>
         <Text style={[styles.titleText, styles.textBasic]}>
           펍찾기 3회) 압구정 4층에서 스몰토크

@@ -5,7 +5,7 @@ import Frame from '../asset/image/Frame.png';
 import i_search from '../asset/image/i_search.png';
 import bell from '../asset/image/bell.png';
 
-const TopLogo = () => {
+const TimeLength = () => {
   return (
     <SafeAreaView style={styles.frameCont}>
       <View style={styles.frame}>
@@ -19,4 +19,4 @@ const TopLogo = () => {
   );
 };
 
-export default TopLogo;
+export default TimeLength;
