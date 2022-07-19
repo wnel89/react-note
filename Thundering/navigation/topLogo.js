@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {SafeAreaView, Image, View} from 'react-native';
 import {styles} from '../css/style';
 import Frame from '../asset/image/Frame.png';

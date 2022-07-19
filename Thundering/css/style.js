@@ -10,6 +10,7 @@ export const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderBottomWidth: 1,
     borderColor: '#E6E6E6',
+    height: 56,
   },
   frame: {
     width: '92%',
@@ -39,7 +40,7 @@ export const styles = StyleSheet.create({
   },
   tWrap1: {
     marginRight: 3,
-    marginLeft: 3,
+    marginLeft: 7,
   },
 
   card1: {
