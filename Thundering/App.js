@@ -4,6 +4,6 @@ import Navigator from './navigation/Navigator';
 import HotdealDetail from './detail/HotdealDetail';
 
 export default function App() {
-  return <HotdealDetail />;
-  // <Navigator />;
+  return <Navigator />;
+  // <HotdealDetail />;
 }

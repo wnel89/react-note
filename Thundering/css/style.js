@@ -1,4 +1,8 @@
 import {StyleSheet} from 'react-native';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 export const styles = StyleSheet.create({
   scroll: {
@@ -28,7 +32,7 @@ export const styles = StyleSheet.create({
     marginLeft: 16,
   },
   // ************** Top Logo CSS
-  contWrap1: {
+  cont_Wrap1: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -37,12 +41,92 @@ export const styles = StyleSheet.create({
   },
   cWrap1: {
     flexDirection: 'row',
+    marginLeft: 16,
   },
   tWrap1: {
-    marginRight: 3,
+    marginRight: 5,
+  },
+  cWrap1_TextWrap: {
+    borderWidth: 1,
+    borderColor: '#DDDDDD',
+    marginRight: 9,
+    borderRadius: 7,
+  },
+  cWrap1_Text: {
+    marginHorizontal: 6,
+    marginVertical: 3,
+    textAlign: 'right',
+    color: '#111111',
+    fontWeight: '500',
+    fontSize: 11,
+  },
+  cont_Wrap2: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: '#fff',
+    height: 40,
+    borderColor: '#E6E6E6',
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+  },
+  cWrap2: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  cWrap2_Text1: {
+    marginLeft: 16,
+    fontWeight: '500',
+    fontSize: 13,
+    color: '#888888',
+  },
+  cWrap2_Text2: {
     marginLeft: 7,
+    fontWeight: '500',
+    fontSize: 11,
+    color: '#8554FF',
+    backgroundColor: '#6340D71A',
+    paddingHorizontal: 8,
+    paddingVertical: 1,
+    borderRadius: 7,
+  },
+  cWrap2_img: {
+    marginRight: 27,
+  },
+  cate_Box_Wrap: {
+    alignItems: 'center',
+    width: '100%',
+    backgroundColor: '#FAFAFA',
+    borderBottomLeftRadius: 15,
+    borderBottomRightRadius: 15,
+  },
+  cate_Box: {
+    maxWidth: '95%',
+    minHeight: 10,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginTop: 5,
+    marginBottom: 13,
+    justifyContent: 'center',
+  },
+  cate_Text: {
+    textAlign: 'center',
+    marginHorizontal: 2,
+    marginVertical: 5,
+    borderRadius: 12,
+    paddingHorizontal: 7,
+    paddingVertical: 3,
+    backgroundColor: '#F2F2F2',
+  },
+  shadow_box: {
+    width: '100%',
+    height: 2500,
+    backgroundColor: '#00000077',
+    position: 'absolute',
+    top: 150,
   },
 
+  // **************** FilterTab CSS
   card1: {
     width: '100%',
     height: 330,
@@ -51,7 +135,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 21,
     marginBottom: 10,
-    marginTop: 80,
+    marginTop: 3,
   },
   card2: {
     width: '100%',

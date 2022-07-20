@@ -1,6 +1,6 @@
 import React from 'react';
 import {detailCss} from '../css/detailCss';
-import {ScrollView, Text, View, Image} from 'react-native';
+import {ScrollView, Text, View, Image, TextInput} from 'react-native';
 import TopLogo from '../navigation/topLogo';
 
 const data = [
@@ -107,16 +107,16 @@ const HotdealDetail = () => {
                 <View style={detailCss.introScore}>
                   <Image
                     style={detailCss.scoreImg}
-                    source={require('../asset/image/star.png')}></Image>
+                    source={require('../asset/image/yellowStar.png')}></Image>
                   <Image
                     style={detailCss.scoreImg}
-                    source={require('../asset/image/star.png')}></Image>
+                    source={require('../asset/image/yellowStar.png')}></Image>
                   <Image
                     style={detailCss.scoreImg}
-                    source={require('../asset/image/star.png')}></Image>
+                    source={require('../asset/image/yellowStar.png')}></Image>
                   <Image
                     style={detailCss.scoreImg}
-                    source={require('../asset/image/star.png')}></Image>
+                    source={require('../asset/image/yellowStar.png')}></Image>
                   <Image
                     style={detailCss.scoreImg}
                     source={require('../asset/image/star.png')}></Image>
@@ -124,16 +124,81 @@ const HotdealDetail = () => {
               </View>
             </View>
           </View>
-          <View>
-            <Text style={{fontSize: 35}}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
+          <View style={detailCss.contWrap5}>
+            <View style={detailCss.icon_wrap}>
+              <Image
+                style={detailCss.king_icon}
+                source={require('../asset/image/king.png')}></Image>
+              <Image
+                style={detailCss.hot_icon}
+                source={require('../asset/image/hot.png')}></Image>
+            </View>
+            <View style={detailCss.smallProfileWrap}>
+              <Image
+                style={detailCss.smallProfile}
+                source={require('../asset/image/profile1.png')}></Image>
+              <Image
+                style={detailCss.smallProfile}
+                source={require('../asset/image/profile2.png')}></Image>
+              <Image
+                style={detailCss.smallProfile}
+                source={require('../asset/image/profile1.png')}></Image>
+              <Image
+                style={detailCss.smallProfile}
+                source={require('../asset/image/profile2.png')}></Image>
+              <Image
+                style={detailCss.smallProfile}
+                source={require('../asset/image/profile1.png')}></Image>
+              <Image source={require('../asset/image/moreButton.png')}></Image>
+            </View>
+            <View style={detailCss.inviteButton}>
+              <Text style={detailCss.inviteText}>핫딜 초대하기</Text>
+            </View>
+            <View style={detailCss.thunderContentsWrap}>
+              <Text style={detailCss.thunderContents}>
+                [청담 벨뷰]에서 썬더링 회원들만을 위한 깜짝 핫딜을
+                준비했습니다!!
+                {'\n'}2022년 9월 17일 토요일 오전 10시부터 오후 4시까지 썬더링
+                핫딜 참여 회원에게만 전메뉴 30% 할인 이벤트를 진행해요!!
+                {'\n'}청담 최고의 핫플인 벨뷰에서 특별하고 의미있는 시간을
+                만드시길 기원합니다.
+                {'\n'}꼭 참여신청하세요!!
+                {'\n'}정원: 선착순 300명까지예요!
+              </Text>
+            </View>
+          </View>
+          <View style={detailCss.contWrap6}>
+            <View style={detailCss.foodImageWrap}>
+              <Image
+                style={detailCss.foodImage}
+                source={require('../asset/image/food1.png')}></Image>
+              <Image
+                style={detailCss.foodImage}
+                source={require('../asset/image/food2.png')}></Image>
+              <Image
+                style={detailCss.foodImage}
+                source={require('../asset/image/food3.png')}></Image>
+            </View>
+          </View>
+          <View style={detailCss.contWrap7}>
+            <Text style={detailCss.comment_title}>
+              핫딜에 관한 댓글을 남겨보세요.
             </Text>
+            <View style={detailCss.comment_zone}>
+              <Image
+                style={detailCss.smallProfile}
+                source={require('../asset/image/profile1.png')}></Image>
+
+              <TextInput
+                multiline={true}
+                // numberOfLines={5}
+                autoCapitalize={'none'}
+                editable={true}
+                placeholder="댓글 써보기..."
+                style={detailCss.comment_input}></TextInput>
+
+              <Text style={detailCss.comment_btn}>등록</Text>
+            </View>
           </View>
         </ScrollView>
       </View>

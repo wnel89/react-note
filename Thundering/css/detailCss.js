@@ -5,7 +5,7 @@ export const detailCss = StyleSheet.create({
     flex: 1,
   },
   scroll: {
-    backgroundColor: 'skyblue',
+    backgroundColor: 'white',
   },
   contWrap1: {
     width: '100%',
@@ -57,6 +57,7 @@ export const detailCss = StyleSheet.create({
   contWrap3: {
     width: '100%',
     marginLeft: 16,
+    backgroundColor: 'white',
   },
   cateFont1: {
     fontSize: 12,
@@ -80,10 +81,14 @@ export const detailCss = StyleSheet.create({
   },
   contWrap4: {
     width: '100%',
-    marginTop: 2,
-    marginLeft: 16,
-    marginBottom: 12,
+    paddingTop: 12,
+    paddingLeft: 16,
+    paddingBottom: 12,
+    borderColor: '#E6E6E6',
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
     flexDirection: 'row',
+    backgroundColor: 'white',
   },
   smallimg: {
     borderRadius: 3,
@@ -101,7 +106,7 @@ export const detailCss = StyleSheet.create({
     marginVertical: 2,
   },
   introText: {
-    width: 45,
+    width: 47,
     height: 18,
     fontWeight: '400',
     color: '#888888',
@@ -109,6 +114,7 @@ export const detailCss = StyleSheet.create({
     textAlign: 'center',
     textAlignVertical: 'center',
     marginRight: 4,
+    paddingHorizontal: 2,
     backgroundColor: '#F2F2F2',
     borderRadius: 12,
   },
@@ -129,6 +135,106 @@ export const detailCss = StyleSheet.create({
   },
   scoreImg: {
     marginRight: 4,
+  },
+  contWrap5: {
+    width: '100%',
+    marginLeft: 16,
+  },
+  icon_wrap: {
+    position: 'absolute',
+    zIndex: 99,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  king_icon: {
+    top: 3,
+    left: 13,
+  },
+  hot_icon: {
+    top: 11,
+    left: 18,
+  },
+  smallProfileWrap: {
+    marginTop: 11,
+    marginBottom: 13,
+    flexDirection: 'row',
+    alignItems: 'center',
+    textAlign: 'center',
+  },
+  smallProfile: {
+    borderRadius: 45,
+    marginRight: 8,
+    backgroundColor: '#F2F2F2',
+  },
+  inviteButton: {
+    marginRight: 32,
+    height: 48,
+    backgroundColor: '#F84B62',
+    borderRadius: 8,
+  },
+  inviteText: {
+    textAlign: 'center',
+    marginVertical: 13,
+    color: '#FFFFFF',
+    fontSize: 15,
+    fontWeight: '500',
+  },
+  thunderContentsWrap: {
+    marginLeft: 4,
+    marginRight: 36,
+    marginVertical: 8,
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    borderWidth: 2,
+    borderColor: '#0000001A',
+  },
+  thunderContents: {
+    fontSize: 15,
+    fontWeight: '400',
+    color: '#111111',
+    lineHeight: 22,
+  },
+  contWrap6: {
+    width: '100%',
+  },
+  foodImageWrap: {
+    marginHorizontal: 16,
+    alignItems: 'center',
+  },
+  foodImage: {
+    width: '100%',
+    borderRadius: 15,
+    marginBottom: 8,
+  },
+  contWrap7: {
+    marginLeft: 16,
+  },
+  comment_title: {
+    fontSize: 18,
+    fontWeight: '500',
+    lineHeight: 22,
+    color: '#111111',
+  },
+  comment_zone: {
+    flexDirection: 'row',
+    marginTop: 15,
+    marginBottom: 70,
+    alignItems: 'center',
+    // backgroundColor: 'pink',
+  },
+  comment_input: {
+    width: 250,
+    maxHeight: 130,
+    marginTop: 10,
+    marginRight: 34,
+    // borderWidth: 1,
+    padding: 10,
+  },
+  comment_btn: {
+    fontSize: 15,
+    fontWeight: '700',
+    color: '#00000066',
+    // backgroundColor: 'pink',
   },
   buttonB: {
     width: '100%',
