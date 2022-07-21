@@ -1,7 +1,14 @@
-import React from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import {Shadow} from 'react-native-shadow-2';
 import {styles} from '../css/style';
-import {ScrollView, Text, View, Image} from 'react-native';
+import {
+  Animated,
+  TouchableOpacity,
+  ScrollView,
+  Text,
+  View,
+  Image,
+} from 'react-native';
 import Pub from '../asset/image/pub.png';
 import Book from '../asset/image/book.png';
 
@@ -115,8 +122,25 @@ const data = [
     id: 27,
   },
 ];
+
 const ThunderTab = () => {
   const FilterTab = () => {
+    const [state, setState] = useState(false);
+    // state가 true 이면 카테고리 탭이 보임.
+    const animValue = useRef(new Animated.Value(0)).current;
+
+    const _moveTab = () => {
+      Animated.timing(animValue, {
+        toValue: 250,
+        useNativeDriver: true,
+        duration: 2000,
+      }).start();
+    };
+
+    useEffect(() => {
+      console.log('상태:' + state, animValue);
+    }, [state]);
+
     return (
       <View>
         <View style={styles.cont_Wrap1}>
@@ -129,7 +153,7 @@ const ThunderTab = () => {
             <Text style={styles.cWrap1_Text}>200km·60일</Text>
           </View>
         </View>
-        <View style={styles.shadow_box}></View>
+
         <View style={styles.cont_Wrap2}>
           <View style={styles.cWrap2}>
             <Text style={styles.cWrap2_Text1}>
@@ -137,21 +161,42 @@ const ThunderTab = () => {
             </Text>
             <Text style={styles.cWrap2_Text2}>3/5</Text>
           </View>
-          <Image
-            style={styles.cWrap2_img}
-            source={require('../asset/image/up.png')}></Image>
+          <TouchableOpacity
+            onPress={() => {
+              _moveTab();
+              setState(!state);
+            }}>
+            {state ? (
+              <Image
+                style={styles.cWrap2_img}
+                source={require('../asset/image/up.png')}
+              />
+            ) : (
+              <Image
+                style={styles.cWrap2_img}
+                source={require('../asset/image/down.png')}
+              />
+            )}
+          </TouchableOpacity>
         </View>
-        <View style={styles.cate_Box_Wrap}>
-          <View style={styles.cate_Box}>
-            {data.map(item => (
-              // <View style={styles.cate_Text_Wrap}>
-              <Text key={item.id} style={styles.cate_Text}>
-                {item.cate}
-              </Text>
-              // </View>
-            ))}
+        {state ? (
+          <View>
+            <View style={styles.shadow_box}></View>
+            <Animated.View
+              style={[
+                styles.cate_Box_Wrap,
+                {transfrom: [{translateY: animValue}]},
+              ]}>
+              <View style={styles.cate_Box}>
+                {data.map(item => (
+                  <Text key={item.id} style={styles.cate_Text}>
+                    {item.cate}
+                  </Text>
+                ))}
+              </View>
+            </Animated.View>
           </View>
-        </View>
+        ) : null}
       </View>
     );
   };

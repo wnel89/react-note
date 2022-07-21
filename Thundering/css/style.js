@@ -1,8 +1,4 @@
 import {StyleSheet} from 'react-native';
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from 'react-native-responsive-screen';
 
 export const styles = StyleSheet.create({
   scroll: {
@@ -94,6 +90,7 @@ export const styles = StyleSheet.create({
     marginRight: 27,
   },
   cate_Box_Wrap: {
+    position: 'absolute',
     alignItems: 'center',
     width: '100%',
     backgroundColor: '#FAFAFA',
