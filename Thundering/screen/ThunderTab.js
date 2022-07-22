@@ -8,6 +8,7 @@ import {
   Text,
   View,
   Image,
+  Easing,
 } from 'react-native';
 import Pub from '../asset/image/pub.png';
 import Book from '../asset/image/book.png';
@@ -127,19 +128,29 @@ const ThunderTab = () => {
   const FilterTab = () => {
     const [state, setState] = useState(false);
     // state가 true 이면 카테고리 탭이 보임.
-    const animValue = useRef(new Animated.Value(0)).current;
-
-    const _moveTab = () => {
-      Animated.timing(animValue, {
-        toValue: 250,
-        useNativeDriver: true,
-        duration: 2000,
-      }).start();
-    };
-
+    const animValue1 = useRef(new Animated.Value(0)).current;
     useEffect(() => {
-      console.log('상태:' + state, animValue);
-    }, [state]);
+      Animated.timing(animValue1, {
+        toValue: 200,
+        duration: 1000,
+        delay: 0,
+        useNativeDriver: false,
+        isInteraction: true,
+      }).start();
+      console.log('렌더링 확인');
+      console.log(state);
+    }, []);
+
+    const animValue2 = useRef(new Animated.Value(0)).current;
+    useEffect(() => {
+      Animated.timing(animValue2, {
+        toValue: 1,
+        duration: 1000,
+        delay: 500,
+        useNativeDriver: true,
+        isInteraction: true,
+      }).start();
+    }, []);
 
     return (
       <View>
@@ -153,7 +164,6 @@ const ThunderTab = () => {
             <Text style={styles.cWrap1_Text}>200km·60일</Text>
           </View>
         </View>
-
         <View style={styles.cont_Wrap2}>
           <View style={styles.cWrap2}>
             <Text style={styles.cWrap2_Text1}>
@@ -163,7 +173,6 @@ const ThunderTab = () => {
           </View>
           <TouchableOpacity
             onPress={() => {
-              _moveTab();
               setState(!state);
             }}>
             {state ? (
@@ -181,17 +190,19 @@ const ThunderTab = () => {
         </View>
         {state ? (
           <View>
-            <View style={styles.shadow_box}></View>
             <Animated.View
               style={[
-                styles.cate_Box_Wrap,
-                {transfrom: [{translateY: animValue}]},
-              ]}>
+                styles.shadow_box,
+                {opacity: animValue2},
+              ]}></Animated.View>
+            <Animated.View style={[styles.cate_Box_Wrap, {height: animValue1}]}>
               <View style={styles.cate_Box}>
                 {data.map(item => (
-                  <Text key={item.id} style={styles.cate_Text}>
+                  <Animated.Text
+                    key={item.id}
+                    style={[styles.cate_Text, {opacity: animValue2}]}>
                     {item.cate}
-                  </Text>
+                  </Animated.Text>
                 ))}
               </View>
             </Animated.View>
