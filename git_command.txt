@@ -1,0 +1,1 @@
+git status : 깃 상태 확인
